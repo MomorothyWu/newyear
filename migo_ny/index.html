@@ -1,5 +1,8 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Happy New Year</title>
     <link rel="stylesheet" href="style2.css">
   </head>
@@ -55,6 +58,7 @@
       const card = document.querySelector(".card");
       const front = document.querySelector(".front");
       const back = document.querySelector(".back");
+      const cardContainer = document.querySelector(".card-container");
 
       // start
       polaroids.forEach(polaroid => {
@@ -101,7 +105,6 @@
       });
 
       // flipping animation
-      const cardContainer = document.querySelector(".card-container");
       cardContainer.addEventListener("click", () => {
         playClickSound();
         cardContainer.classList.toggle("flip-card");
