@@ -1,0 +1,243 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen {
+  width: 375px;
+  height: 812px;
+  background-image: url(assets/ui/mainBg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.start {
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/ui/startingPage.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start.hide {
+  display: none;
+}
+
+.startBtn {
+  width: 252px;
+  height: 120px;
+  background-image: url(assets/ui/startBtn.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 200px;
+  cursor: pointer;
+}
+
+.filter {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  display: none;
+}
+
+.filter.show {
+  display: block;
+}
+
+.card{
+  height: 346px;
+  width:232px;
+  /*3d effect*/
+  perspective: 1000px;
+  display: none;
+  position: relative;
+}
+
+.card.show {
+  /* when polaroid been clicked */
+  display: block;
+}
+
+.card-container {
+  height:100%;
+  width: 100%;
+  box-sizing: border-box;
+  /*position*/
+  position: relative;
+  /*flip card*/
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.front, .back{
+  height:100%;
+  width:100%;
+  /*display*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.front{
+  /*style*/
+  cursor: pointer;
+  /*Position*/
+  position: absolute;
+  /*Flip Card (hidden when flipped to back)*/
+  backface-visibility: hidden;
+}
+
+.back{
+  /*style*/
+  cursor: pointer;
+  /*Position*/
+  position: absolute;
+  /*Flip Card*/
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.flip-card{
+  transform: rotateY(180deg);
+}
+
+.hint {
+  width: 210px;
+  height: 60px;
+  background-image: url(assets/ui/hint.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 20px;
+  top: -50px;
+  z-index: 100;
+}
+
+.close-btn{
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  background-image: url(assets/ui/closeBtn.png);
+  border: none;
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.polaroid {
+  width: 40px;
+  height: 40px;
+  background-color: none;
+  background-image: url(assets/ui/polaroid.png);
+  border: none;
+  position: absolute;
+  top: 300px;
+  left: 400px;
+  cursor: pointer;
+  display: block;
+}
+
+.polaroid.hide {
+  display: none;
+}
+
+#p0 {
+  top: 100px;
+  left: 184px;
+  transform: rotate(5deg);
+}
+
+#p1 {
+  top: 140px;
+  left: 53px;
+  transform: rotate(3deg);
+}
+
+#p2 {
+  top: 284px;
+  left: 104px;
+  transform: rotate(-10deg);
+}
+
+#p3 {
+  top: 382px;
+  left: 182px;
+  transform: rotate(10deg);
+}
+
+#p4 {
+  top: 366px;
+  left: 294px;
+  transform: rotate(-5deg);
+}
+
+#p5 {
+  top: 432px;
+  left: 32px;
+  transform: rotate(5deg);
+}
+
+#p6 {
+  top: 544px;
+  left: 328px;
+}
+
+#p7 {
+  top: 616px;
+  left: 64px;
+  transform: rotate(-10deg);
+}
+#p8 {
+  top: 670px;
+  left: 290px;
+}
+
+#p9 {
+  top: 731px;
+  left: 12px;
+  transform: rotate(5deg);
+}
+
+#p10 {
+  top: 752px;
+  left: 162px;
+}
+
+#p11 {
+  top: 530px;
+  left: 166px;
+  transform: rotate(10deg);
+}
+
+.ending {
+  width: 360px;
+  height: 729px;
+  background-image: url(assets/ui/ending.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: none;
+}
+
+.ending.show {
+  display: block;
+  z-index: 100;
+}

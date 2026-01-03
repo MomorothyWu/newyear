@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <title>Happy New Year</title>
+    <link rel="stylesheet" href="style2.css">
+  </head>
+  <body>
+    <div class="screen">
+      <div class="start">
+        <div class="startBtn"></div>
+      </div>
+
+      <div class="filter"></div>
+
+      <div class="polaroid" data-index="0" id="p0"></div>
+      <div class="polaroid" data-index="1" id="p1"></div>
+      <div class="polaroid" data-index="2" id="p2"></div>
+      <div class="polaroid" data-index="3" id="p3"></div>
+      <div class="polaroid" data-index="4" id="p4"></div>
+      <div class="polaroid" data-index="5" id="p5"></div>
+      <div class="polaroid" data-index="6" id="p6"></div>
+      <div class="polaroid" data-index="7" id="p7"></div>
+      <div class="polaroid" data-index="8" id="p8"></div>
+      <div class="polaroid" data-index="9" id="p9"></div>
+      <div class="polaroid" data-index="10" id="p10"></div>
+      <div class="polaroid" data-index="11" id="p11"></div>
+
+      <!-- card -->
+      <div class="card">
+        <div class="hint"></div>
+        <button class="close-btn" onclick="closeCard()"></button>
+        <div class="card-container">
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+      </div>
+
+      <div class="ending"></div>
+    </div>
+
+    <script>
+      // audio setup
+      const clickSound = new Audio("assets/audio/mouse-click.mp3");
+      clickSound.volume = 0.6;
+
+      // clicking sound
+      function playClickSound() {
+        clickSound.currentTime = 0;
+        clickSound.play();
+      }
+
+      // card
+      const startPage = document.querySelector(".start");
+      const polaroids = document.querySelectorAll(".polaroid");
+      const filter = document.querySelector(".filter");
+      const card = document.querySelector(".card");
+      const front = document.querySelector(".front");
+      const back = document.querySelector(".back");
+
+      // start
+      polaroids.forEach(polaroid => {
+        polaroid.classList.add("hide");
+      });
+      document.querySelector(".startBtn").addEventListener("click", e=> {
+        startPage.classList.add("hide");
+        polaroids.forEach(polaroid => {
+          polaroid.classList.remove("hide");
+        });
+        playClickSound();
+      });
+
+      // cards data storage
+      const cardData = [
+        {frontImg: "assets/images/front01.png", backImg: "assets/images/back01.png"},
+        {frontImg: "assets/images/front02.png", backImg: "assets/images/back02.png"},
+        {frontImg: "assets/images/front03.png", backImg: "assets/images/back03.png"},
+        {frontImg: "assets/images/front04.png", backImg: "assets/images/back04.png"},
+        {frontImg: "assets/images/front05.png", backImg: "assets/images/back05.png"},
+        {frontImg: "assets/images/front06.png", backImg: "assets/images/back06.png"},
+        {frontImg: "assets/images/front07.png", backImg: "assets/images/back07.png"},
+        {frontImg: "assets/images/front08.png", backImg: "assets/images/back08.png"},
+        {frontImg: "assets/images/front09.png", backImg: "assets/images/back09.png"},
+        {frontImg: "assets/images/front10.png", backImg: "assets/images/back10.png"},
+        {frontImg: "assets/images/front11.png", backImg: "assets/images/back11.png"},
+        {frontImg: "assets/images/front12.png", backImg: "assets/images/back12.png"},
+      ];
+
+      // show control
+      polaroids.forEach(polaroid => {
+        polaroid.addEventListener("click", () => {
+          const index = polaroid.dataset.index;
+
+          front.style.backgroundImage = `url(${cardData[index].frontImg})`;
+          back.style.backgroundImage = `url(${cardData[index].backImg})`;
+
+          playClickSound();
+          cardContainer.classList.remove("flip-card");
+          card.classList.add("show");
+          polaroid.classList.add("hide");
+          filter.classList.add("show");
+        });
+      });
+
+      // flipping animation
+      const cardContainer = document.querySelector(".card-container");
+      cardContainer.addEventListener("click", () => {
+        playClickSound();
+        cardContainer.classList.toggle("flip-card");
+      });
+
+      document.querySelector(".close-btn").addEventListener("click", e => {
+        card.classList.remove("show");
+        filter.classList.remove("show");
+        playClickSound();
+        checkAllPolaroidsCollected();
+      });
+
+      function checkAllPolaroidsCollected() {
+        const remaining = document.querySelectorAll(".polaroid:not(.hide)");
+
+        if (remaining.length === 0) {
+          const ending = document.querySelector(".ending");
+          filter.classList.add("show");
+          ending.classList.add("show");
+        }
+      }
+
+    </script>
+  </body>
+</html>
