@@ -1,3 +1,15 @@
+@keyframes floatUpDn {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -47,6 +59,7 @@ html, body {
   background-repeat: no-repeat;
   margin-top: 200px;
   cursor: pointer;
+  animation: floatUpDn 3s ease-in-out infinite;
 }
 
 .filter {
